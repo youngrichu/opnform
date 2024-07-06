@@ -1,0 +1,36 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "DOCKER",
+    "dockerfilePath": "./Dockerfile"
+  },
+  "deploy": {
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10,
+    "numReplicas": 1,
+    "sleepApplication": false,
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 300
+  },
+  "variables": {
+    "APP_NAME": "OpenForm",
+    "APP_ENV": "production",
+    "APP_KEY": {"generator": "secret"},
+    "APP_DEBUG": "false",
+    "APP_URL": "${{RAILWAY_STATIC_URL}}",
+    "DB_CONNECTION": "mysql",
+    "DB_HOST": "${{MYSQL_HOST}}",
+    "DB_PORT": "${{MYSQL_PORT}}",
+    "DB_DATABASE": "${{MYSQL_DATABASE}}",
+    "DB_USERNAME": "${{MYSQL_USERNAME}}",
+    "DB_PASSWORD": "${{MYSQL_PASSWORD}}",
+    "MAIL_MAILER": "smtp",
+    "MAIL_HOST": "",
+    "MAIL_PORT": "587",
+    "MAIL_USERNAME": "",
+    "MAIL_PASSWORD": "",
+    "MAIL_ENCRYPTION": "tls",
+    "MAIL_FROM_ADDRESS": "noreply@yourdomain.com",
+    "MAIL_FROM_NAME": "OpenForm"
+  }
+}
